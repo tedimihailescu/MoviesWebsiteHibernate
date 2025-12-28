@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="pojo.Nominalizari" table="nominalizari" catalog="website_filme" optimistic-lock="version">
+		<id name="idnominalizare" type="java.lang.Long">
+			<column name="idnominalizare" />
+			<generator class="identity" />
+		</id>
+		<many-to-one name="filme" class="pojo.Filme"
+			fetch="select">
+			<column name="idfilm" />
+		</many-to-one>
+		<many-to-one name="categorii" class="pojo.Categorii"
+			fetch="select">
+			<column name="idcategorie" />
+		</many-to-one>
+		<property name="titluNominalizare" type="string">
+			<column name="titlu_nominalizare" length="45" />
+		</property>
+	</class>
+</hibernate-mapping>

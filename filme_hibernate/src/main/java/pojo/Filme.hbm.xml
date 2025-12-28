@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="pojo.Filme" table="filme" catalog="website_filme"
+		optimistic-lock="version">
+		<id name="idfilm" type="java.lang.Long">
+			<column name="idfilm" />
+			<generator class="identity" />
+		</id>
+		<property name="titlu" type="string">
+			<column name="titlu" length="45" />
+		</property>
+		<property name="anAparitie" type="java.lang.Integer">
+			<column name="an_aparitie" />
+		</property>
+		<property name="regizor" type="string">
+			<column name="regizor" length="45" />
+		</property>
+		<property name="durataMinute" type="java.lang.Long">
+			<column name="durata_minute" />
+		</property>
+		<property name="notaImdb" type="java.lang.Float">
+			<column name="nota_imdb" />
+		</property>
+		<set name="nominalizari" table="nominalizari" inverse="true"
+			lazy="true" fetch="select">
+			<key>
+				<column name="idfilm" />
+			</key>
+			<one-to-many class="pojo.Nominalizari" />
+		</set>
+	</class>
+</hibernate-mapping>
